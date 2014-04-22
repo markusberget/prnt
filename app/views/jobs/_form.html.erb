@@ -54,7 +54,7 @@
   </div>
 </div>
 
-<%= f.hidden_field :printer, :value => "[1,2]" %>
+<%= f.hidden_field :printer, :value => "[]" %>
 
   <div class="actions">
     <%= f.submit %>
@@ -63,13 +63,13 @@
 <script>
 var mapOptions, map, GeoMarker, printers, circle;
 
-function createPrinter(d, p){
+function createPrinter(id, p){
     var image = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
     return {marker: new google.maps.Marker({
                         position: p,
                         map: map,
                         icon: image}),
-        data:d,
+        id:id,
         selected:false};
 }
 
@@ -80,6 +80,17 @@ function setPrinterSelected(p, b){
     } else {
         p.marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
     }
+    updateSelectionInForm();
+}
+
+function updateSelectionInForm(){
+    var values = [];
+    printers.forEach(function(printer){
+        if(printer.selected){
+            values.push(printer.id);
+        }
+    });
+    $('#job_printer').val(JSON.stringify(values));
 }
 
 function initialize() {
@@ -88,21 +99,11 @@ function initialize() {
     center: new google.maps.LatLng(57.70567520430679, 11.963586330413818)
   }
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-/*
-  p1 = new google.maps.LatLng(57.70011465939335, 11.976933002471924);
-  p2 = new google.maps.LatLng(57.70772723097088, 11.964916706085205);
-  p3 = new google.maps.LatLng(57.7079565004711, 11.974186420440674);
-  p4 = new google.maps.LatLng(57.7011465776028, 11.959337711334229);
-  printers = [createPrinter('',p1),
-              createPrinter('',p2),
-              createPrinter('',p3),
-              createPrinter('',p4),
-  ];*/
   printers = [];
   $.getJSON('/printers.json', function(data){
     data.forEach(function(printer){
         var latLng = $.parseJSON(printer.location);
-        printers.push(createPrinter('',new google.maps.LatLng(latLng.lat, latLng.lng)));
+        printers.push(createPrinter(printer.id, new google.maps.LatLng(latLng.lat, latLng.lng)));
     });
       printers.forEach(function(printer){
         google.maps.event.addListener(printer.marker, 'click', function() {
