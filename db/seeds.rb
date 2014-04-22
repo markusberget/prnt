@@ -13,7 +13,12 @@ user =  User.create(name: "Mattias Appelgren", email: "matapp@student.chalmers.s
 user2 = User.create(name: "Markus Berget", email: "berget@student.chalmers.se")
 
 
-printer = Printer.create(name: "Canon Superprinter", configuration: config, user: user)
+printer = Printer.create(name: "Canon Superprinter", configuration: config,
+                         location:'{"lat":57.7011465776028, "lng":11.959337711334229}',
+                        user: user)
+printer2 = Printer.create(name: "PC Load letter", configuration: config,
+                          location: '{"lat":57.70772723097088, "lng":11.964916706085205}',
+                          user: user)
 
 Job.create(document: "Link to something", configuration: config, printer: printer, user: user2)
 
