@@ -19,7 +19,7 @@
         <td><%= job.copies %></td>
         <td><%= job.status %></td>
         <% unless @current_user.printers.empty? %>
-          <td><%= link_to 'Accept', edit_job_path(job) %></td>
+          <td><%= link_to 'Accept', edit_job_path(job), :class => "btn btn-primary" %></td>
         <% end %>
       </tr>
     <% end %>

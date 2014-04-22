@@ -5,7 +5,11 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
      @current_user = current_user
-     @jobs = Job.where(printer: current_user.printers, status: "unassigned").includes(:configuration)
+    if current_user.printers.empty?
+      @jobs = User.jobs
+    else
+      @jobs = Job.where(printer: current_user.printers, status: "unassigned").includes(:configuration)
+    end
   end
 
   # GET /jobs/1
