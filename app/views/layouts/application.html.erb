@@ -9,6 +9,9 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     <title>prnt</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zy1m662a1hgtf0a"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
 
@@ -54,7 +57,5 @@
       <%= yield %>
     </div><!-- /.container -->
 
-    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zy1m662a1hgtf0a"></script>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
 </html>
