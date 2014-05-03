@@ -44,7 +44,10 @@
                 <a href="#profile"><%= @current_user.name %></a>
               <% end %>
             </li>
-            <li><a href="#jobs"><span class="badge"><%= @job_count %></span>Jobs</a></li>
+            <li><%= link_to jobs_path do %>
+                <span class="badge"><%= @job_count %></span>Jobs</a>
+              <% end %>
+            </li>
             <li><a href="#about"><span class="glyphicon glyphicon-pencil navicon"></span> Add printer</a></li>
             <li><%= link_to users_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
               <span class="glyphicon glyphicon-remove navicon"></span>Log Out

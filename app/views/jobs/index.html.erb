@@ -9,7 +9,7 @@
       <% unless @current_user.printers.empty? %>
         <th colspan="1"></th>
         <% end %>
-    </tr>
+      </tr>
   </thead>
 
   <tbody>
@@ -19,7 +19,15 @@
         <td><%= job.copies %></td>
         <td><%= job.status %></td>
         <% unless @current_user.printers.empty? %>
-          <td><%= link_to 'Accept', edit_job_path(job), :class => "btn btn-primary" %></td>
+          <td>
+          <div class="print_job">
+            <%= link_to 'Accept', edit_job_path(job), :class => "btn btn-primary" %>
+          </div>
+          <div id=<%= job.id %> class='print_job_accepted'>
+            <%= render :partial => 'edit_form', :locals => { :job => job } %>
+          </div>
+
+          </td>
         <% end %>
       </tr>
     <% end %>

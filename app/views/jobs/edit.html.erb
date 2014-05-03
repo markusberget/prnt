@@ -1,3 +1,4 @@
 <h1>Print</h1>
 
-<%= render 'edit_form' %>
+<%#= render 'edit_form' %>
+<%= render :partial => 'edit_form', :locals => { :job => @job } %>
