@@ -3,7 +3,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Document</th>
+      <th>Description</th>
       <th>Copies</th>
       <th>Status</th>
       <% unless @current_user.printers.empty? %>
@@ -15,7 +15,7 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.document %></td>
+        <td><%= job.description %></td>
         <td><%= job.copies %></td>
         <td><%= job.status %></td>
         <% unless @current_user.printers.empty? %>

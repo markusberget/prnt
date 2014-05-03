@@ -20,6 +20,7 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     @job = Job.new
+    @job.copies = 1
   end
 
   # GET /jobs/1/edit
@@ -69,7 +70,7 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        format.html { redirect_to jobs_path, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
@@ -96,6 +97,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:document, :copies, :configuration, :status, :printer)
+      params.require(:job).permit(:document, :copies, :configuration, :status, :printer, :description)
     end
 end
