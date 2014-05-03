@@ -10,6 +10,8 @@ class JobsController < ApplicationController
     else
       @jobs = Job.where(printer: current_user.printers, status: ["Unassigned", "Accepted"]).includes(:configuration)
     end
+    @job = Job.new
+    @printer = Printer.new
   end
 
   # GET /jobs/1
