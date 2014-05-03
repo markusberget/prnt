@@ -14,5 +14,5 @@ user =  User.create(name: "Mattias Appelgren", email: "matapp@student.chalmers.s
 
 printer = Printer.create(name: "Canon Superprinter", configuration: config, user: user)
 
-#Job.create(document: "Link to something", configuration: config)
+Job.create(document: "Link to something", configuration: config, printer: printer)
 
