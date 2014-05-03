@@ -19,13 +19,14 @@ a:hover {
   border: 1px solid #fff;
 }
 
-.panel {
-  width: 60%;
-}
-
 .starter-template {
   padding: 40px 15px;
   text-align: center;
+}
+
+
+.modal {
+  color: #333;
 }
 
 .video-wrapper{

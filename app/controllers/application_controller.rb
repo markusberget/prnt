@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def index
+    @job = Job.new
   end
 
 
