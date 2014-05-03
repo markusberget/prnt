@@ -66,6 +66,10 @@ body{
   height: 100%;
 }
 
+h1.jobs-title{
+  margin-top: 50px;
+}
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .center-wrapper {

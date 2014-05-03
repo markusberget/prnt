@@ -108,6 +108,9 @@ options = {
 
 $(document).ready(function(){
   var button = Dropbox.createChooseButton(options);
-  document.getElementById("upload_file").appendChild(button);
+  var $uploadFile = $("upload_file");
+  if($uploadFile.length > 0){
+    $uploadFile[0].appendChild(button);
+  }
   initializeMaps();
 });
