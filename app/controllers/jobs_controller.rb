@@ -4,7 +4,8 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-     @jobs = Job.where(printer: current_user.printers).includes(:configuration)
+     @current_user = current_user
+     @jobs = Job.where(printer: current_user.printers, status: "unassigned").includes(:configuration)
   end
 
   # GET /jobs/1
@@ -24,19 +25,37 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(job_params)
 
-    @job.status = "unassigned"
+    printer_ids = JSON.parse(job_params[:printer])
 
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    printers = Printer.where(id: printer_ids)
+
+    job_params_fixed = job_params
+
+    job_params_fixed[:printer] = nil
+
+
+    printers.each do |printer|
+
+      @job = Job.new(job_params_fixed)
+
+      @job.printer = printer
+
+      @job.status = "unassigned"
+      @job.save
     end
+
+    redirect_to root_path
+
+    # respond_to do |format|
+    #   if @job.save
+    #     format.html { redirect_to @job, notice: 'Job was successfully created.' }
+    #     format.json { render :show, status: :created, location: @job }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @job.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /jobs/1
