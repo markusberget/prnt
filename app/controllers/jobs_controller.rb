@@ -8,7 +8,7 @@ class JobsController < ApplicationController
     if current_user.printers.empty?
       @jobs = current_user.jobs
     else
-      @jobs = Job.where(printer: current_user.printers, status: "unassigned").includes(:configuration)
+      @jobs = Job.where(printer: current_user.printers, status: ["Unassigned", "Accepted"]).includes(:configuration)
     end
   end
 
@@ -24,6 +24,8 @@ class JobsController < ApplicationController
 
   # GET /jobs/1/edit
   def edit
+    @job.update(status: "Accepted")
+    redirect_to jobs_path
   end
 
   # POST /jobs
@@ -45,7 +47,7 @@ class JobsController < ApplicationController
 
       @job.printer = printer
 
-      @job.status = "unassigned"
+      @job.status = "Unassigned"
       @job.save
     end
 
