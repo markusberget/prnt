@@ -4,10 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate, :except => [:index]
 
+  layout 'index', :only => [:index]
+
   def authenticate
   	unless current_user
   		redirect_to users_login_path
   	end
+  end
+
+  def index
   end
 
 
@@ -17,7 +22,5 @@ class ApplicationController < ActionController::Base
   	@current_user || session[:current_user_id] && User.find_by(id: session[:current_user_id])
   end
 
-  def index
-  end
-
 end
+
