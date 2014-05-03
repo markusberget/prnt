@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503070417) do
+ActiveRecord::Schema.define(version: 20140503105330) do
 
   create_table "configurations", force: true do |t|
     t.integer  "price"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140503070417) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
   end
 
   add_index "jobs", ["configuration_id"], name: "index_jobs_on_configuration_id"
@@ -41,9 +42,11 @@ ActiveRecord::Schema.define(version: 20140503070417) do
     t.integer  "configuration_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "job_id"
   end
 
   add_index "printers", ["configuration_id"], name: "index_printers_on_configuration_id"
+  add_index "printers", ["job_id"], name: "index_printers_on_job_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
