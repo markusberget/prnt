@@ -15,7 +15,8 @@
   <%= f.hidden_field :status, :value => "Done" %>
 
   <div class="actions">
-    <%= link_to "Download Document", job.document, :class => "btn btn-primary" %>
+    <%#= link_to "Download Document", job.document, :class => "btn btn-primary" %>
+    <a class="btn btn-primary" href=<%= job.document %>>Download Document</a>
     <%= f.submit "Confirm Printed", :class => "btn btn-success" %>
   </div>
 <% end %>

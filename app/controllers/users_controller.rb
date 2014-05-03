@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def login
     @user = User.new
+    @job = Job.new
+    @printer = Printer.new
   end
 
   def login_post
