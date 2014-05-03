@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
     end
     @job = Job.new
     @current_user = current_user
+    @printer = Printer.new
   end
 
 

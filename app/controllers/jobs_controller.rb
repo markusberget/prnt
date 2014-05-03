@@ -6,7 +6,7 @@ class JobsController < ApplicationController
   def index
      @current_user = current_user
     if current_user.printers.empty?
-      @jobs = User.jobs
+      @jobs = current_user.jobs
     else
       @jobs = Job.where(printer: current_user.printers, status: "unassigned").includes(:configuration)
     end

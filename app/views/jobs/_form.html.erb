@@ -1,10 +1,10 @@
 <%= form_for(@job) do |f| %>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="printLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Print</h4>
+        <h4 class="modal-title" id="printLabel">Print</h4>
       </div>
       <div class="modal-body">
 
@@ -20,45 +20,40 @@
     </div>
   <% end %>
 
+<h3>What?</h3>
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">What?</h3>
-  </div>
-  <div class="panel-body row">
-    <div class="form-group col-md-5">
-      <label for="inputFile">Upload file</label>
-      <input class="file_input" id="inputFile" name="attachment[file]" type="file">
-      <p class="help-block">Upload a file from your computer</p>
-    </div>
-    
-    <div class="col-md-2"> or </div>
+  <div class="panel-body">
 
-    <div id="upload_file" class="col-md-5"></div>
-  </div>
-  <div>
-    <div class="field">
+    <div class="row">
+      <div class="col-md-5">
+      <div class="form-group">
+        <label for="inputFile">Upload file</label>
+        <input class="file_input" id="inputFile" name="attachment[file]" type="file">
+      </div>
+      </div>
+      <div class="col-md-2"> or </div>
+
+      <div id="upload_file" class="col-md-5"></div>
+    </div>
+
+    <div class="field form-group">
       <%= f.label :copies %><br>
       <%= f.number_field :copies %>
     </div>
   </div>
 </div>
 
+<h3>Where?</h3>
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Where?</h3>
-  </div>
   <div class="panel-body" id="map-canvas" style="height:400px">
   </div>
 </div>
 
+<h3>When?</h3>
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">When?</h3>
-  </div>
   <div class="panel-body">
       <div class="form-group">
     <input class="date_input" id="inputDate" name="inputDate" type="date">
-    <p class="help-block">When do you need your document?</p>
   </div>
   </div>
 </div>
@@ -152,10 +147,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
       </div>
       <div class="modal-footer">
-        <div class="actions">
-          <%= f.submit %>
-        </div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <%= f.submit :class => "btn btn-primary" %>
       </div>
     </div>
   </div>
