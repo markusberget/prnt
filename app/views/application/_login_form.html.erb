@@ -1,0 +1,5 @@
+<%= form_tag("/application/login", method: "post") do %>
+  <%= label_tag(:email, "Username") %>
+  <%= text_field_tag(:email) %>
+  <%= submit_tag("Login") %>
+<% end %>

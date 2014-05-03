@@ -7,3 +7,6 @@ end
 
 def index
 end
+
+def login_user
+end
