@@ -29,6 +29,10 @@ var ready = function(){
 	
 }
 
+$('#myModal').on('shown.bs.modal', function (e) {
+  //maps.setCenter(new google.maps.LatLng(57.70567520430679, 11.963586330413818));
+});
+
 $(document).ready(ready);
 $(document).on("page:load", ready);
 
