@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
       end
     end
     @job = Job.new
+    @printer = Printer.new
   end
 
 

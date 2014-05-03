@@ -1,10 +1,10 @@
 <%= form_for(@printer) do |f| %>
-<div class="modal fade" id="printerModal" tabindex="-1" role="dialog" aria-labelledby="printerLabel" aria-hidden="true">
+<div class="modal fade" id="sharePrinterModal" tabindex="-1" role="dialog" aria-labelledby="sharePrinterLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="printerLabel">Print</h4>
+        <h4 class="modal-title" id="sharePrinterLabel">Share a printer</h4>
       </div>
       <div class="modal-body">
     <% if @printer.errors.any? %>
@@ -34,9 +34,6 @@
     <div class="field">
       <%= f.label :configuration_id %><br>
       <%= f.text_field :configuration_id %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
     </div>
   </div>
       <div class="modal-footer">
