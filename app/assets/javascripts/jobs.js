@@ -3,7 +3,6 @@ options = {
     // Required. Called when a user selects an item in the Chooser.
     success: function(files) {
     	$("#job_document").val(files[0].link);
-        alert("Here's the file link: " + files[0].link);
     },
 
     // Optional. Called when the user closes the dialog without selecting a file
