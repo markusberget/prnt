@@ -7,4 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Configuration.create(description: "Standard")
+config = Configuration.create(description: "Standard")
+
+user =  User.create(name: "Mattias Appelgren", email: "matapp@student.chalmers.se")
+
+
+printer = Printer.create(name: "Canon Superprinter", configuration: config, user: user)
+
+#Job.create(document: "Link to something", configuration: config)
+
