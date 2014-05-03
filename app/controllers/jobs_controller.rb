@@ -4,6 +4,16 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
+
+    @job_count = 0
+    if current_user
+      if current_user.printers.empty?
+        @job_count = current_user.jobs.count
+      else
+        @job_count = Job.where(printer: current_user.printers, status: ["Unassigned", "Accepted"]).includes(:configuration).count
+      end
+    end
+
      @current_user = current_user
     if current_user.printers.empty?
       @jobs = current_user.jobs
