@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503112633) do
+ActiveRecord::Schema.define(version: 20140503153617) do
 
   create_table "configurations", force: true do |t|
     t.integer  "price"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140503112633) do
     t.datetime "updated_at"
     t.date     "date"
     t.integer  "printer_id"
+    t.string   "description"
   end
 
   add_index "jobs", ["configuration_id"], name: "index_jobs_on_configuration_id"
