@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'users/login' => 'users#login'
+  post 'users/login' => 'users#login_post'
+  delete 'users' => 'users#destroy'
+
   resources :users
 
   resources :printers
@@ -12,8 +17,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'application#index'
-
-  get 'application/login' => 'application#login'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
