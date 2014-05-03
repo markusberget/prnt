@@ -46,10 +46,12 @@ ActiveRecord::Schema.define(version: 20140503112633) do
     t.integer  "configuration_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "job_id"
     t.integer  "user_id"
   end
 
   add_index "printers", ["configuration_id"], name: "index_printers_on_configuration_id"
+  add_index "printers", ["job_id"], name: "index_printers_on_job_id"
   add_index "printers", ["user_id"], name: "index_printers_on_user_id"
 
   create_table "users", force: true do |t|
