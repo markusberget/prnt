@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       if current_user.printers.empty?
         @job_count = current_user.jobs.count
       else
-        @job_count = Job.where(printer: current_user.printers, status: "unassigned").includes(:configuration).count
+        @job_count = Job.where(printer: current_user.printers, status: "Unassigned").includes(:configuration).count
       end
     end
     @job = Job.new

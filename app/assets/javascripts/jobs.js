@@ -36,18 +36,6 @@ function initializeMaps() {
     center: new google.maps.LatLng(57.70567520430679, 11.963586330413818)
   }
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  printers = [];
-  $.getJSON('/printers.json', function(data){
-    data.forEach(function(printer){
-        var latLng = $.parseJSON(printer.location);
-        printers.push(createPrinter(printer.id, new google.maps.LatLng(latLng.lat, latLng.lng)));
-    });
-      printers.forEach(function(printer){
-        google.maps.event.addListener(printer.marker, 'click', function() {
-           setPrinterSelected(printer, !printer.selected);
-        });
-      });
-  });
 var circleOptions = {
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,
@@ -72,6 +60,19 @@ var circleChanged = function() {
         }
   });
 };
+  printers = [];
+  $.getJSON('/printers.json', function(data){
+    data.forEach(function(printer){
+        var latLng = $.parseJSON(printer.location);
+        printers.push(createPrinter(printer.id, new google.maps.LatLng(latLng.lat, latLng.lng)));
+    });
+      printers.forEach(function(printer){
+        google.maps.event.addListener(printer.marker, 'click', function() {
+           setPrinterSelected(printer, !printer.selected);
+        });
+      });
+      circleChanged();
+  });
 google.maps.event.addListener(circle, 'radius_changed', circleChanged);
 google.maps.event.addListener(circle, 'center_changed', circleChanged);
 

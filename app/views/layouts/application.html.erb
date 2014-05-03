@@ -52,9 +52,15 @@
               <% end %>
             </li>
             <li><a href="javascript:void();" data-toggle="modal" data-target="#sharePrinterModal"><span class="glyphicon glyphicon-pencil navicon"></span> Add printer</a></li>
-            <li><%= link_to users_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <span class="glyphicon glyphicon-remove navicon"></span>Log Out
-            <% end %></li>
+            <% unless @current_user.nil? %>
+              <li><%= link_to users_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-remove navicon"></span>Log Out
+              <% end %></li>
+            <% else %>
+              <li><%= link_to users_login_path do %>
+                <span class="glyphicon glyphicon-user navicon"></span>Log In
+                <% end %></li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -65,6 +71,9 @@
     <div class="container splash">
       <%= yield %>
     </div><!-- /.container -->
+
+    <%= render partial: "jobs/form" %>
+    <%= render partial: "printers/form" %>
 
   </body>
 </html>

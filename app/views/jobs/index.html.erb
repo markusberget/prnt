@@ -22,13 +22,11 @@
         <td><%= job.status %></td>
         <% unless @current_user.printers.empty? %>
           <td>
-          <div class="print_job">
+          <% if job.status.eql? "Unassigned" %>
             <%= link_to 'Accept', edit_job_path(job), :class => "btn btn-primary" %>
-          </div>
-          <div id=<%= job.id %> class='print_job_accepted'>
+          <% else %>
             <%= render :partial => 'edit_form', :locals => { :job => job } %>
-          </div>
-
+          <% end %>
           </td>
         <% end %>
       </tr>
