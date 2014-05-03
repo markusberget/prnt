@@ -1,6 +1,6 @@
 var ready = function(){
 
-	if($("body.splash").length > 0){
+
 		var $win = $(window);
 		var height = $win.height();
 		var width = $win.width();
@@ -26,7 +26,7 @@ var ready = function(){
 			  setVideoSize();
 		});
 		setVideoSize();
-	}
+	
 }
 
 $(document).ready(ready);

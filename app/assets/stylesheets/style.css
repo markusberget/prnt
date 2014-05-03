@@ -28,6 +28,16 @@ a:hover {
   text-align: center;
 }
 
+.video-wrapper{
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 /*
  * Base structure
@@ -37,31 +47,48 @@ html{
 	height: 100%;
 }
 
-.content-margin {
-  margin-top: 60px;
+body{
+	height: 100%;
+	background-color: #000;
+	color: #fff;
 }
 
-body.splash {
-	height: 100%;
-	background-color: #333;
-	color: #fff;
-	text-align: center;
+.navbar-default{
+  background-color: transparent;
+  border: 0;
 }
+
+.container.splash{
+  height: 100%;
+}
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
-.site-wrapper {
+.center-wrapper {
   display: table;
   width: 100%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
 }
-.site-wrapper-inner {
+.center-wrapper .inner {
   display: table-cell;
-  vertical-align: top;
+  vertical-align: middle;
 }
+
+
 .cover-container {
   margin-right: auto;
   margin-left: auto;
+}
+
+.navbar-collapse{
+  border: 0;
+  box-shadow: none;
+  
+}
+
+.navbar-default .navbar-nav>li>a{
+  color:#fff;
 }
 
 /* Padding for spacing */
@@ -69,72 +96,20 @@ body.splash {
   padding: 30px;
 }
 
-.video-wrapper{
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.5;
-  position: absolute;
-  overflow: hidden;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-body.splash .btn-huge{
+.btn-huge{
   font-size: 36px;
 }
 
 video.splashvid{
 	position: absolute;
-	z-index: -2;
+	z-index: -1;
 	left: 0;
   top: 0;
-}
-
-
-/*
- * Header
- */
-.masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-ul.masthead-nav > li {
-  display: inline-block;
-}
-.masthead-nav > li + li {
-  margin-left: 20px;
-}
-.masthead-nav > li > a {
-  padding-right: 0;
-  padding-left: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
-}
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: rgba(255,255,255,.25);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  opacity: 0.5;
 }
 
 @media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
+
 }
 
 
@@ -151,49 +126,9 @@ ul.masthead-nav > li {
 }
 
 
-/*
- * Footer
- */
-
 .mastfoot {
   color: #999; /* IE8 proofing */
   color: rgba(255,255,255,.5);
-}
-
-
-/*
- * Affix and center
- */
-
-@media (min-width: 768px) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
+  position: fixed;
     bottom: 0;
-  }
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
-  }
-  /* Handle the widths */
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }
-}
-
-@media (min-width: 992px) {
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 700px;
-  }
-.navicon {
-  font-size: 18px;
-  vertical-align: middle;
 }
