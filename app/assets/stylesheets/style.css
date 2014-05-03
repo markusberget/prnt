@@ -167,4 +167,7 @@ ul.masthead-nav > li {
   .cover-container {
     width: 700px;
   }
+.navicon {
+  font-size: 18px;
+  vertical-align: middle;
 }
