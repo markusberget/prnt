@@ -1,4 +1,4 @@
 class Job < ActiveRecord::Base
 	belongs_to :configuration
-	has_many :printers
+	belongs_to :printer
 end
