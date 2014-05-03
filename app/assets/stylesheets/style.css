@@ -19,6 +19,10 @@ a:hover {
   border: 1px solid #fff;
 }
 
+.panel {
+  width: 60%;
+}
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;
@@ -32,6 +36,11 @@ a:hover {
 html{
 	height: 100%;
 }
+
+.content-margin {
+  margin-top: 60px;
+}
+
 body.splash {
 	height: 100%;
 	background-color: #333;
