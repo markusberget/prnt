@@ -1,4 +1,5 @@
 <%= form_for(@job) do |f| %>
+  <h1>What</h1>
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -19,14 +20,15 @@
     <%= f.label :copies %><br>
     <%= f.number_field :copies %>
   </div>
-  <div class="field">
-    <%= f.label :configuration %><br>
-    <%= collection_select(:job, :configuration_id, Configuration.all, :id, :description) %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
+
+  <h1>Where</h1>
+
+  <iframe width="625" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=47.569986,106.962891&amp;t=h&amp;z=4&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/?ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=47.569986,106.962891&amp;t=h&amp;z=4&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+  <h1>When</h1>
+
+  <p>DATE PICKER!!</p>
+
   <div class="actions">
     <%= f.submit %>
   </div>
