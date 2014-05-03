@@ -26,6 +26,8 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
 
+    @job.status = "unassigned"
+
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
@@ -69,6 +71,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:document, :copies, :configuration, :status)
+      params.require(:job).permit(:document, :copies, :configuration, :status, :printer)
     end
 end
