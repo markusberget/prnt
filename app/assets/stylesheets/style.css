@@ -66,9 +66,14 @@ body.splash {
   background-color: #000;
   opacity: 0.5;
   position: absolute;
+  overflow: hidden;
   left: 0;
   top: 0;
   z-index: -1;
+}
+
+body.splash .btn-huge{
+  font-size: 36px;
 }
 
 video.splashvid{

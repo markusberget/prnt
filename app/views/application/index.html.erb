@@ -20,8 +20,15 @@
         <h1 class="cover-heading">Get ready to prnt.</h1>
         <p class="lead">prnt is a super simple low-cost service to provide printing of stuff, wherever you are, whenever you want.</p>
         <p class="lead">
-          <%= link_to 'Print Stuff', new_job_path, :class => "btn btn-lg btn-default" %>
-          <%= link_to 'Share My Printer', new_printer_path, :class => "btn btn-lg btn-default" %>
+        <%= link_to new_job_path, :class => "btn btn-lg btn-default btn-huge" do %>
+        <span class="glyphicon glyphicon glyphicon-print"></span>
+        Print  
+        <% end %>
+          &nbsp;&nbsp;
+        <%= link_to new_printer_path, :class => "btn btn-lg btn-default btn-huge" do %>
+        <span class="glyphicon glyphicon glyphicon-share"></span>
+        Share my printer  
+        <% end %>
         </p>
       </div>
       <div class="mastfoot">
