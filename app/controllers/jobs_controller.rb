@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+     @jobs = Job.where(printer: current_user.printers).includes(:configuration)
   end
 
   # GET /jobs/1
