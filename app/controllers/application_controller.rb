@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
         @job_count = Job.where(printer: current_user.printers, status: "unassigned").includes(:configuration).count
       end
     end
+    @job = Job.new
   end
 
 

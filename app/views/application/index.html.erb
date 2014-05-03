@@ -1,18 +1,40 @@
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Print</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "jobs/form" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="center-wrapper">
     <div class="cover inner">
       <h1 class="cover-heading">Get ready to prnt.</h1>
       <p class="lead">prnt is a super simple low-cost service to provide printing of stuff, wherever you are, whenever you want.</p>
       <p class="lead">
-        <%= link_to new_job_path, :class => "btn btn-lg btn-default btn-huge" do %>
-        <span class="glyphicon glyphicon glyphicon-print"></span>
-        Print  
-        <% end %>
+        <a class="btn btn-lg btn-default btn-huge" data-toggle="modal" data-target="#myModal">
+          <span class="glyphicon glyphicon-print"></span>
+          Print
+        </a>
         &nbsp;&nbsp;
         <%= link_to new_printer_path, :class => "btn btn-lg btn-default btn-huge" do %>
-        <span class="glyphicon glyphicon glyphicon-share"></span>
+        <span class="glyphicon glyphicon-share"></span>
         Share my printer  
         <% end %>
       </p>
+
     </div>
 </div>
 <div class="mastfoot">
