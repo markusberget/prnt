@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @configuration.price %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @configuration.color %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @configuration.size %>
+</p>
+
+<p>
+  <strong>Double sided:</strong>
+  <%= @configuration.double_sided %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @configuration.description %>
+</p>
+
+<%= link_to 'Edit', edit_configuration_path(@configuration) %> |
+<%= link_to 'Back', configurations_path %>

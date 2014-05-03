@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @printer.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @printer.location %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @printer.rating %>
+</p>
+
+<p>
+  <strong>Configuration:</strong>
+  <%= @printer.configuration %>
+</p>
+
+<%= link_to 'Edit', edit_printer_path(@printer) %> |
+<%= link_to 'Back', printers_path %>

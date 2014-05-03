@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 1
+  color: false
+  size: MyString
+  double_sided: false
+  description: MyText
+
+two:
+  price: 1
+  color: false
+  size: MyString
+  double_sided: false
+  description: MyText
