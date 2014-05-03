@@ -1,5 +1,20 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :authenticate, only: [:login, :new, :create, :login_post]
+  before_action :set_user, only: [:show, :edit, :update]
+
+  def login
+    @user = User.new
+  end
+
+  def login_post
+    if user = User.find_by(email: user_params[:email])
+      session[:current_user_id] = user.id
+      redirect_to root_path
+    else
+      format.html { render :login }
+      format.json { render json: @user.errors, status: :unprocessable_entity }
+    end
+  end
 
   # GET /users
   # GET /users.json
@@ -28,7 +43,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        session[:current_user_id] = @user.id
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -54,11 +70,13 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
+    @current_user = session[:current_user_id] = nil
+    redirect_to root_url
+    # @user.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to users_url }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

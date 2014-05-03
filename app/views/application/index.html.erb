@@ -3,3 +3,6 @@
 <%= link_to 'Share My Printer', new_printer_path %>
 
 <%= link_to 'Print Stuff', new_job_path %>
+
+
+<td><%= link_to 'Log Out', users_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
