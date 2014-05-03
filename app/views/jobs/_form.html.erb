@@ -59,8 +59,12 @@
 </div>
 
 <%= f.hidden_field :printer, :value => "[]" %>
-
-  <div class="actions">
-    <%= f.submit %>
   </div>
+  <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <%= f.submit :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
