@@ -10,13 +10,16 @@ a:hover {
 }
 
 /* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
+.cover .btn-default,
+.cover .btn-default:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #fff;
   border: 1px solid #fff;
+}
+
+.cover .btn-default:hover{
+  background-color:#ebebeb;
 }
 
 .starter-template {

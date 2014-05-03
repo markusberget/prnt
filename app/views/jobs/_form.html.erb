@@ -152,10 +152,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
       </div>
       <div class="modal-footer">
-        <div class="actions">
-          <%= f.submit %>
-        </div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <%= f.submit :class => "btn btn-primary" %>
       </div>
     </div>
   </div>
