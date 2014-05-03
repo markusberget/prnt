@@ -60,10 +60,22 @@ body.splash {
   padding: 30px;
 }
 
+.video-wrapper{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
 video.splashvid{
 	position: absolute;
-	z-index: -1;
+	z-index: -2;
 	left: 0;
+  top: 0;
 }
 
 
