@@ -72,6 +72,10 @@ body.splash {
   z-index: -1;
 }
 
+body.splash .btn-huge{
+  font-size: 36px;
+}
+
 video.splashvid{
 	position: absolute;
 	z-index: -2;
