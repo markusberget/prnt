@@ -4,7 +4,8 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-     @jobs = Job.where(printer: current_user.printers).includes(:configuration)
+     @current_user = current_user
+     @jobs = Job.where(printer: current_user.printers, status: "unassigned").includes(:configuration)
   end
 
   # GET /jobs/1
@@ -24,17 +25,37 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(job_params)
 
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    printer_ids = JSON.parse(job_params[:printer])
+
+    printers = Printer.where(id: printer_ids)
+
+    job_params_fixed = job_params
+
+    job_params_fixed[:printer] = nil
+
+
+    printers.each do |printer|
+
+      @job = Job.new(job_params_fixed)
+
+      @job.printer = printer
+
+      @job.status = "unassigned"
+      @job.save
     end
+
+    redirect_to root_path
+
+    # respond_to do |format|
+    #   if @job.save
+    #     format.html { redirect_to @job, notice: 'Job was successfully created.' }
+    #     format.json { render :show, status: :created, location: @job }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @job.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /jobs/1
@@ -69,6 +90,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:document, :copies, :configuration, :status)
+      params.require(:job).permit(:document, :copies, :configuration, :status, :printer)
     end
 end

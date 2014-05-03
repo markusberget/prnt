@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
   has_many :printers
-  belongs_to :job
+  has_many :jobs
 end

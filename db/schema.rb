@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140503112633) do
     t.string   "document"
     t.integer  "copies"
     t.integer  "configuration_id"
+    t.integer  "user_id"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140503112633) do
 
   add_index "jobs", ["configuration_id"], name: "index_jobs_on_configuration_id"
   add_index "jobs", ["printer_id"], name: "index_jobs_on_printer_id"
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
 
   create_table "printers", force: true do |t|
     t.string   "name"
@@ -57,12 +59,10 @@ ActiveRecord::Schema.define(version: 20140503112633) do
     t.string   "email"
     t.integer  "credits"
     t.integer  "printers_id"
-    t.integer  "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["job_id"], name: "index_users_on_job_id"
   add_index "users", ["printers_id"], name: "index_users_on_printers_id"
 
 end

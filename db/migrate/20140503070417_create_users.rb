@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.integer :credits
       t.references :printers, index: true
-      t.references :job, index: true
 
       t.timestamps
     end
