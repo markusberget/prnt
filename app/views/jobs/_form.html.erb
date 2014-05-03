@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :configuration %><br>
-    <%= f.text_field :configuration %>
+    <%= collection_select(:job, :configuration_id, Configuration.all, :id, :description) %>
   </div>
   <div class="field">
     <%= f.label :status %><br>
